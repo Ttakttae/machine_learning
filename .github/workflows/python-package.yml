@@ -22,7 +22,7 @@ jobs:
       run: |
          python3 -m pip install --upgrade pip
          python3 -m pip install flake8 tensorflow
-         python3 -m pip install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+         python3 -m pip install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio==0.8.1
          python3 -m pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
