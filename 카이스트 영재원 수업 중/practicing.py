@@ -1,38 +1,27 @@
-import tensorflow.keras
-from PIL import Image, ImageOps
-import numpy as np
+import pandas as pd
+import tensorflow as tf
 
-# Disable scientific notation for clarity
-np.set_printoptions(suppress=True)
+파일경로 = 'https://raw.githubusercontent.com/blackdew/tensorflow1/master/csv/lemonade.csv'
+레모네이드 = pd.read_csv(파일경로)
+독립 = 레모네이드[['온도']]
+종속 = 레모네이드[['판매량']]
+print(레모네이드)
 
-# Load the model
-model = tensorflow.keras.models.load_model('keras_model.h5')
+파일경로 = 'https://raw.githubusercontent.com/blackdew/tensorflow1/master/csv/boston.csv'
+보스턴 = pd.read_csv(파일경로)
+print(보스턴)
 
-# Create the array of the right shape to feed into the keras model
-# The 'length' or number of images you can put into the array is
-# determined by the first position in the shape tuple, in this case 1.
-data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+파일경로 = 'https://raw.githubusercontent.com/blackdew/tensorflow1/master/csv/iris.csv'
+아이리스 = pd.read_csv(파일경로)
+print(아이리스)
 
-# Replace this with the path to your image
-image = Image.open('test_photo.jpg')
+X = tf.keras.layers.Input(shape=[1])
+Y = tf.keras.layers.Dense(1)(X)
+model = tf.keras.models.Model(X,Y)
+model.compile(loss='mse')
 
-#resize the image to a 224x224 with the same strategy as in TM2:
-#resizing the image to be at least 224x224 and then cropping from the center
-size = (224, 224)
-image = ImageOps.fit(image, size, Image.ANTIALIAS)
+model.fit(독립, 종속, epochs=10000)
 
-#turn the image into a numpy array
-image_array = np.asarray(image)
+model.predict(독립)
 
-# display the resized image
-image.show()
-
-# Normalize the image
-normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-
-# Load the image into the array
-data[0] = normalized_image_array
-
-# run the inference
-prediction = model.predict(data)
-print(prediction)
+print(독립)
