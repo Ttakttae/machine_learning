@@ -10,7 +10,7 @@ x_data = onehot[['꽃잎길이', '꽃잎폭', '꽃받침길이', '꽃받침폭']
 y_data = onehot[['품종_setosa', '품종_versicolor', '품종_virginica']]
 print(x_data.shape, y_data.shape)
 
-def test_machine_learning():
+def machine_learning():
     #모델 설정 및 학습 및 출력
     X = tf.keras.layers.Input(shape=[4])
     Y = tf.keras.layers.Dense(3, activation='softmax')(X)
@@ -20,4 +20,4 @@ def test_machine_learning():
     model.predict(x_data[-5:])
     print(y_data[-5:])
 
-test_machine_learning()
+machine_learning()
