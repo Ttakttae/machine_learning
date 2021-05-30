@@ -9,8 +9,8 @@ print(data.columns)
 x_data = data[['crim', 'zn', 'indus', 'chas', 'nox', 'rm', 'age', 'dis', 'rad', 'tax', 'ptratio', 'b', 'lstat']]
 y_data = data[['medv']]
 print(x_data.shape, y_data.shape)
-
-def test_machine_learning():
+   
+def machine_learning():
     #모델 설정 및 학습 및 출력
     X = tf.keras.layers.Input(shape=[13])
     Y = tf.keras.layers.Dense(1)(X)
@@ -21,4 +21,4 @@ def test_machine_learning():
     print(data)
     model.get_weights()
 
-test_machine_learning()
+machine_learning()
