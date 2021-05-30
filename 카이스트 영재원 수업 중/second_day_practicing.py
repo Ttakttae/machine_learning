@@ -20,6 +20,6 @@ def test_machine_learning():
 
     model.get_weights()
 
-    판매량 =  1.9876952 * 온도 + 0.29019067
+    #판매량 =  1.9876952 * 온도 + 0.29019067
 
 test_machine_learning()
