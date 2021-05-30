@@ -14,5 +14,8 @@ def test_machine_learning():
     model = tf.keras.models.Model(X, Y)
     model.compile(loss='mse')
     model.fit(x_data, y_data, epochs = 10000)
+    model.predict(x_data)
+    print(data)
+    model.get_weights()
 
 test_machine_learning()
